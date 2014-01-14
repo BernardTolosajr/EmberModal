@@ -1,0 +1,4 @@
+EmberModal
+==========
+
+Ember Modal
