@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="css/main.css" rel="stylesheet">	
+		<!--<link href="tweeter/bootstrap.min.css" rel="stylesheet"> -->	
+	</head>
+	<body>
+
+		<script type="text/x-handlebars">
+			{{outlet}}
+			{{outlet modal}}
+		</script>
+
+		<script type="text/x-handlebars" data-template-name="index">
+			<h4>The current name is: {{name}}</h5>
+			{{outlet}}
+			<button {{action 'openModal' 'modal' model}}>Change Name</button>
+		</script>
+
+		<script type="text/x-handlebars" data-template-name="modal">
+			{{#modal-dialog action="close"}}
+				<h3 class="flush--top">Name Change Modal</h5>
+				<p>Enter a new name:</p>
+				<p>{{input value=name}}</p>
+				<button {{action "close"}}>Done</button>
+			{{/modal-dialog}}
+		</script>
+
+		<script type="text/x-handlebars" id="components/modal-dialog">
+			<div class="overlay" {{action "close"}}>
+				<div class="modal" {{action bubbles=false}}>
+					{{yield}}
+				</div>
+			</div>
+		</script>
+
+
+		<script src="libs/jquery-1.9.1.js"></script>
+		<script src="libs/handlebars-1.0.0.js"></script>
+		<script src="libs/ember-1.1.2.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
